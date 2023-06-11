@@ -1,0 +1,39 @@
+id: uwphy_Differential_Encoder
+label: Differential Encoder
+category: "[uwphy]"
+
+templates:
+  imports: import uwphy
+  make: uwphy.Differential_Encoder(${vlen}, ${M}, ${pilot})
+
+parameters:
+  - id: vlen
+    label: Vec Length
+    dtype: int
+    default: "1024"
+    hide: part
+  - id: M
+    label: M
+    dtype: int
+    default: "2"
+  - id: pilot
+    label: Pilot
+    dtype: int
+    default: "0"
+    hide: part
+
+inputs:
+  - domain: stream
+    dtype: byte
+    vlen: ${ vlen - 1 }
+
+outputs:
+  - domain: stream
+    dtype: byte
+    vlen: ${ vlen }
+
+asserts:
+  - ${ vlen > 2 }
+  - ${ pilot < M }
+
+file_format: 1

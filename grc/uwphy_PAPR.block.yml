@@ -1,0 +1,28 @@
+id: uwphy_PAPR
+label: PAPR
+category: "[uwphy]"
+
+templates:
+  imports: import uwphy
+  make: uwphy.PAPR(${vlen})
+
+parameters:
+  - id: vlen
+    label: Vec Length
+    dtype: int
+    default: "1024"
+
+inputs:
+  - domain: stream
+    dtype: complex
+    vlen: ${ vlen }
+
+outputs:
+  - domain: stream
+    dtype: float
+    vlen: "1"
+
+asserts:
+  - ${ vlen > 0 }
+
+file_format: 1

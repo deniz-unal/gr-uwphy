@@ -1,0 +1,28 @@
+id: uwphy_Differential_Decoder
+label: Differential Decoder
+category: "[uwphy]"
+
+templates:
+  imports: import uwphy
+  make: uwphy.Differential_Decoder(${vlen})
+
+parameters:
+  - id: vlen
+    label: Vec Length
+    dtype: int
+    default: "1024"
+
+inputs:
+  - domain: stream
+    dtype: complex
+    vlen: ${ vlen }
+
+outputs:
+  - domain: stream
+    dtype: complex
+    vlen: ${ vlen-1 }
+
+asserts:
+  - ${ vlen > 1 }
+
+file_format: 1

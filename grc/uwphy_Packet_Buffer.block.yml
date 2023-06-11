@@ -1,0 +1,33 @@
+id: uwphy_Packet_Buffer
+label: Packet Buffer
+category: "[uwphy]"
+
+templates:
+  imports: import uwphy
+  make: uwphy.Packet_Buffer(${num_data}*${num_sym})
+
+parameters:
+  - id: num_data
+    label: ndata
+    dtype: int
+    default: "1024"
+  - id: num_sym
+    label: nsym
+    dtype: int
+    default: "1"
+
+inputs:
+  - domain: stream
+    dtype: byte
+    vlen: "1"
+
+outputs:
+  - domain: stream
+    dtype: byte
+    vlen: "1"
+
+asserts:
+  - ${ num_sym > 0 }
+  - ${ num_data > 0 }
+
+file_format: 1

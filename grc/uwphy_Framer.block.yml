@@ -1,0 +1,50 @@
+id: uwphy_Framer
+label: Framer
+category: "[uwphy]"
+
+templates:
+  imports: import uwphy
+  make: uwphy.Framer(${pre_len}, ${sym_len}, ${post_len})
+
+parameters:
+  - id: pre_len
+    label: Preamble
+    dtype: int
+    default: "1024"
+    hide: part
+  - id: sym_len
+    label: Symbol
+    dtype: int
+    default: "1024"
+    hide: part
+  - id: post_len
+    label: Post
+    dtype: int
+    default: "1024"
+    hide: part
+
+inputs:
+  - label: pre
+    domain: stream
+    dtype: complex
+    vlen: 1
+    optional: 0
+  - label: sym
+    domain: stream
+    dtype: complex
+    vlen: 1
+    optional: 0
+  - label: post
+    domain: stream
+    dtype: complex
+    vlen: 1
+    optional: 1
+
+outputs:
+  - label: out
+    domain: stream
+    dtype: complex
+    vlen: 1
+    optional: 0
+
+file_format: 1

@@ -1,0 +1,45 @@
+id: uwphy_Deframer
+label: Deframer
+category: "[uwphy]"
+
+templates:
+  imports: import uwphy
+  make: uwphy.Deframer(${sym_offset}, ${sym_length}, ${post_length})
+
+parameters:
+  - id: sym_offset
+    label: Pre Guard
+    dtype: int
+    default: "1024"
+    hide: part
+  - id: sym_length
+    label: Symbol
+    dtype: int
+    default: "1024"
+    hide: part
+  - id: post_length
+    label: Post
+    dtype: int
+    default: "0"
+    hide: part
+
+inputs:
+  - label: in
+    domain: stream
+    dtype: complex
+    vlen: 1
+    optional: 0
+  - label: det
+    domain: stream
+    dtype: float
+    vlen: 1
+    optional: 0
+
+outputs:
+  - label: out
+    domain: stream
+    dtype: complex
+    vlen: 1
+    optional: 0
+
+file_format: 1
